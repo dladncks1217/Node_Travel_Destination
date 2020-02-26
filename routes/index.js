@@ -17,8 +17,8 @@ router.get('/',async (req,res,next)=>{
             })
             .then((post1)=>{
                 console.log('post1');
-                res.render('indexloggedin',{
-                    isAuthenticated:req.isAuthenticated(),
+                res.render('index',{
+                    isLoggedIn:req.isAuthenticated(),
                     user:user.nick,
                     postcount:post1.count,
                     post1,
@@ -34,7 +34,7 @@ router.get('/',async (req,res,next)=>{
             .then((post1)=>{
                 console.log(post1);
                 res.render('index',{
-                    isAuthenticated:req.isAuthenticated(),
+                    isLoggedIn:req.isAuthenticated(),
                     postcount:post1.count,
                     post1,
                 });
@@ -52,9 +52,14 @@ router.get('/travel',async (req,res,next)=>{
         if(req.isAuthenticated()){
             const user = await User.findOne({where:{id:req.user.id}});
             
-        return res.render('travelloggedin',{user:user.nick});
+        return res.render('travel',{
+            isLoggedIn:req.isAuthenticated(),
+            user:user.nick
+        });
         }else{
-            return res.render('travel');
+            return res.render('travel',{
+                isLoggedIn:req.isAuthenticated(),
+            });
         }
     }catch(err){
         console.error(err);

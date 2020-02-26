@@ -1,0 +1,31 @@
+<link href="./css/login.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<html class="loginbackground">
+    <title>Login</title>
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <div class="fadeIn first">
+      <br>
+      <h1>로그인</h1>
+      <br>
+    </div>
+    <% let loginError="" %>
+    <!-- Login Form -->
+    <form action='/auth/login' method="post">
+      <input type="email" id="login" class="fadeIn second" name="email" placeholder="email을 입력하세요.">
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="비밀번호를 입력하세요.">
+      <input type="submit" class="fadeIn fourth" value="Log In">
+    </form>
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <span>
+      <%= loginError %>
+      </span>
+      <a class="underlineHover" href="/">돌아가기</a>
+    </div>
+  </div>
+</div>
+</html>

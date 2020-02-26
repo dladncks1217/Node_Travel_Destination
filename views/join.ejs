@@ -1,0 +1,30 @@
+<link href="./css/login.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="./css/clean-blog.min.css" rel="stylesheet">
+<!------ Include the above in your HEAD tag ---------->
+<html class="loginbackground">
+   <title>Join</title>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <!-- Icon -->
+    <div class="fadeIn first">
+        <br>
+      <h1>회원가입</h1>
+      <br>
+    </div>
+    <!-- Login Form -->
+    <form action="/join/join" method="post">
+      <input type="email" id="login" class="fadeIn second" name="email" placeholder="email을 입력하세요.">
+      <input type="text" id="password" class="fadeIn third" name="nick" placeholder="사용하실 닉네임을 입력하세요.">
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="사용하실 비밀번호를 입력하세요.">
+      <input type="submit" class="fadeIn fourth" value="Sign In">
+    </form>
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" id="back"href="/">back</a>
+    </div>
+  </div>
+</div>
+</html>

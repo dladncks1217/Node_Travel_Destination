@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <% if(isLoggedIn){ %>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <li class="nav-item">
+                  <p class="nav-link" id="who">안녕하세요! <%= user %>님! </p>
+                </li>
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/travel">Travel recommendations</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/board">board</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/profile">profile</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/auth/logout">logout</a>
+                  </li>
+                </ul>
+              </div>
+        <% }else{ %>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/travel">Travel recommendations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/board">board</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/auth">login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/join">join</a>
+                    </li>
+                </ul>
+            </div>
+        <% } %>
+    </div>
+</nav>
+<!-- Page Header -->
+<header class="masthead">
+    <div class="overlay"><img
+                src="https://img-wishbeen.akamaized.net/plan/1463029230608__%EC%8A%AC%EB%A1%9C%EB%B2%A0%EB%8B%88%EC%95%8403.jpg"
+                alt="배경" id="background_img"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>Travel Schedular</h1>
+                    <br><br>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

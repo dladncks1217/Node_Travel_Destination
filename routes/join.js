@@ -23,7 +23,7 @@ router.post('/join',isNotLoggedIn, async (req,res,next)=>{
             return res.redirect('/join');
         } 
         console.time('암호화 시간 확인용')
-        const hash = await bcrypt.hash(password,20);
+        const hash = await bcrypt.hash(password,12);
         console.timeEnd('암호화 시간 확인용');
         await User.create({
             email,

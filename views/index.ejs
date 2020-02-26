@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Travel Schedular</title>
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
+    type='text/css'>
+  <link
+    href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+    rel='stylesheet' type='text/css'>
+  <link href="./css/clean-blog.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./css/indexcss.css">
+</head>
+<body>
+<%- include('header') %>
+  <div class="container">
+    <div class="row">
+      <div class="boards">
+        <div class="card h-100">
+          <h4 class="card-header">여행지</h4>
+          <div class="card-body">
+            <div class="travelList"><span class="travelListText">서울</span><img src="./img/portfolio/서울사진.png"
+                class="travelListPNG" alt="서울사진"><img src="./img/portfolio/서울사진2.png" class="travelListPNG2"
+                alt="서울사진"><img src="./img/portfolio/서울사진3.png" class="travelListPNG3" alt="서울사진"></div><br><br>
+            <div class="travelList"><span class="travelListText">강원도</span><img src="./img/portfolio/강원도사진.png"
+                class="travelListPNG" alt="강원사진"><img src="./img/portfolio/강원도사진2.png" class="travelListPNG2"
+                alt="강원사진"><img src="./img/portfolio/강원도사진3.png" class="travelListPNG3" alt="강원사진"></div><br><br>
+            <div class="travelList"><span class="travelListText">제주</span><img src="./img/portfolio/제주사진.png"
+                class="travelListPNG" alt="제주사진"><img src="./img/portfolio/제주사진2.png" class="travelListPNG2"
+                alt="제주사진"><img src="./img/portfolio/제주사진3.png" class="travelListPNG3" alt="제주사진"></div><br><br>
+          </div>
+          <div class="card-footer">
+            <a href="/travel" class="btn btn-primary">더보기</a>
+          </div>
+        </div>
+      </div>
+      <div class="boards">
+        <div class="card h-100">
+          <h4 class="card-header">게시판</h4>
+          <div class="card-body">
+              <% if(postcount>=5) { %>
+              <% for(let i = 1;i<=5;i++) { %>
+                <div class="postList" >
+                    &nbsp<strong class="strong">(<%= post1.rows[postcount-i].dataValues.place %>) (no.<%= post1.rows[postcount-i].dataValues.id %>)</strong><br>
+                    &nbsp <span id="fontset"> <%= post1.rows[postcount-i].dataValues.content %> </span>
+                </div>
+                <% } %>
+                <% } else{ %>
+                  <% for(let i = 1;i<=5;i++) { %>
+                    <div class="postList" ></div>
+                    <% } %>
+                    <% } %>
+            <div class="card-footer">
+              <a href="/board" class="btn btn-primary">더보기</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+              <hr>
+              <p class="copyright text-muted">sungkonghoi.UNIV</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <script src="vendor/jquery/jquery.min.js"></script>
+      <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <script>
+          const text = document.querySelector('#fontset');
+          if(text.textContent.length>50){
+
+            text.innerHTML = "<span>.....................</span><br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href=\"board\">자세히</a>"
+            post.append(anchor);
+          }
+        </script>
+</body>
+</html>

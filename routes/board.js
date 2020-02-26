@@ -15,8 +15,8 @@ router.get('/',async (req,res,next)=>{
                 }],
             })
             .then((post1)=>{
-                res.render('boardloggedin',{
-                    isAuthenticated:req.isAuthenticated(),
+                res.render('board',{
+                    isLoggedIn:req.isAuthenticated(),
                     user:user.nick,
                     postcount:post1.count,
                     post1,
@@ -31,7 +31,7 @@ router.get('/',async (req,res,next)=>{
             })
             .then((post1)=>{
                 res.render('board',{
-                    isAuthenticated:req.isAuthenticated(),
+                    isLoggedIn:req.isAuthenticated(),
                     postcount:post1.count,
                     post1,
                 });
