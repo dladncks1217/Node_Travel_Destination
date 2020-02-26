@@ -5,54 +5,71 @@ const flash = require('connect-flash');
 
 
 router.get('/',async (req,res,next)=>{
-    if(req.isAuthenticated()){
-        const user = await User.findOne({where:{id:req.user.id}});
-        console.dir(user+ '유저정보');
-        await Post.findAndCountAll({
-            include:[{
-                model:User,
-                attributes:['id','nick'],
-            }],
-        })
-        .then((post1)=>{
-            console.log('post1');
-            res.render('indexloggedin',{
-                user:user.nick,
-                postcount:post1.count,
-                post1,
+    try{
+        if(req.isAuthenticated()){
+            const user = await User.findOne({where:{id:req.user.id}});
+            console.dir(user+ '유저정보');
+            await Post.findAndCountAll({
+                include:[{
+                    model:User,
+                    attributes:['id','nick'],
+                }],
+            })
+            .then((post1)=>{
+                console.log('post1');
+                res.render('indexloggedin',{
+                    isAuthenticated:req.isAuthenticated(),
+                    user:user.nick,
+                    postcount:post1.count,
+                    post1,
+                });
             });
-        });
-    }else{
-        await Post.findAndCountAll({
-            include:[{
-                model:User,
-                attributes:['id','nick'],
-            }],
-        })
-        .then((post1)=>{
-            console.log(post1);
-            res.render('index',{
-                postcount:post1.count,
-                post1,
-            });
-        })
+        }else{
+            await Post.findAndCountAll({
+                include:[{
+                    model:User,
+                    attributes:['id','nick'],
+                }],
+            })
+            .then((post1)=>{
+                console.log(post1);
+                res.render('index',{
+                    isAuthenticated:req.isAuthenticated(),
+                    postcount:post1.count,
+                    post1,
+                });
+            })
+        }   
+    }catch(err){
+        console.error(err);
+        next(err);
     }
 });
 
 
 router.get('/travel',async (req,res,next)=>{
-    if(req.isAuthenticated()){
-        const user = await User.findOne({where:{id:req.user.id}});
-        
-    return res.render('travelloggedin',{user:user.nick});
-    }else{
-        return res.render('travel');
+    try{
+        if(req.isAuthenticated()){
+            const user = await User.findOne({where:{id:req.user.id}});
+            
+        return res.render('travelloggedin',{user:user.nick});
+        }else{
+            return res.render('travel');
+        }
+    }catch(err){
+        console.error(err);
+        next(err);
     }
 });
 
 router.get('/profile',async (req,res,next)=>{
-    const user = await User.findOne({where:{id:req.user.id}});
-    res.render('profile',{user:user.nick});
+    try{
+        const user = await User.findOne({where:{id:req.user.id}});
+        res.render('profile',{user:user.nick});
+    }catch(err){
+        console.error(err);
+        next(err);
+    }
 });
 
 router.post('/profile/change',async (req,res,next)=>{

@@ -5,8 +5,6 @@ const cookieparser = require('cookie-parser');
 const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('passport');
-const localpassport = require('passport-local');
-const bcrypt = require('bcryptjs');
 const passportConfig = require('./passport'); //passport의 index연결
 
 
@@ -16,9 +14,9 @@ const indexRouter = require('./routes/index');
 const joinRouter = require('./routes/join');
 const boardRouter = require('./routes/board');
 
+const {sequelize} = require('./models');
 const app = express();
-
-
+sequelize.sync();
 
 require('dotenv').config();
 
@@ -50,8 +48,6 @@ app.use('/',indexRouter);
 app.use('/auth',authRouter);
 app.use('/join',joinRouter);
 app.use('/board',boardRouter);
-
-
 
 
 app.use((req,res,next)=>{

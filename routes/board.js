@@ -5,34 +5,41 @@ const{User,Post} = require('../models');
 
 
 router.get('/',async (req,res,next)=>{
-    if(req.isAuthenticated()){
-        const user = await User.findOne({where:{id:req.user.id}});
-        await Post.findAndCountAll({
-            include:[{
-                model:User,
-                attributes:['id','nick'],
-            }],
-        })
-        .then((post1)=>{
-            res.render('boardloggedin',{
-                user:user.nick,
-                postcount:post1.count,
-                post1,
+    try{
+        if(req.isAuthenticated()){
+            const user = await User.findOne({where:{id:req.user.id}});
+            await Post.findAndCountAll({
+                include:[{
+                    model:User,
+                    attributes:['id','nick'],
+                }],
+            })
+            .then((post1)=>{
+                res.render('boardloggedin',{
+                    isAuthenticated:req.isAuthenticated(),
+                    user:user.nick,
+                    postcount:post1.count,
+                    post1,
+                });
             });
-        });
-    }else{
-        await Post.findAndCountAll({
-            include:[{
-                model:User,
-                attributes:['id','nick'],
-            }],
-        })
-        .then((post1)=>{
-            res.render('board',{
-                postcount:post1.count,
-                post1,
-            });
-        })
+        }else{
+            await Post.findAndCountAll({
+                include:[{
+                    model:User,
+                    attributes:['id','nick'],
+                }],
+            })
+            .then((post1)=>{
+                res.render('board',{
+                    isAuthenticated:req.isAuthenticated(),
+                    postcount:post1.count,
+                    post1,
+                });
+            })
+        }
+    }catch(err){
+        console.error(err);
+        next(err);
     }
 });
 
