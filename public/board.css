@@ -1,0 +1,68 @@
+#boarder-form {
+    border-bottom: 1px solid silver;
+    padding: 10px;
+    background: #50C2FF;
+    overflow: hidden;
+    width:100%;
+    height:35%;
+    border-radius:10px;
+  }
+.input-group { margin-bottom: 15px;height:130px; }
+.input-group label { width: 25%; display: inline-block; }
+.input-group input { width: 70%; }
+#posting { width: 100%; min-height: 72px; resize:none}
+#img-preview { max-width: 100%; }
+#img-label {
+  float: left;
+  cursor: pointer;
+  border-radius: 4px;
+  border: 1px solid silver;
+  padding: 0 10px;
+  color: white;
+  font-size: 12px;
+  height: 37px;
+  line-height: 37px;
+  background:white;
+  color:crimson;
+}
+#img { display: none; }
+.postbtn {
+    display: inline-block;
+    padding: 0 5px;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 4px;
+    background: white;
+    border: 1px solid black;
+    color: black;
+    height: 37px;
+    line-height: 37px;
+    vertical-align: top;
+    font-size: 15px;
+    font-weight:20px;
+  }
+  .postbtn:hover{
+    background-color:silver;
+  }
+  #selecttravel{
+    display: inline-block;
+    padding: 0 5px;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 4px;
+    background: white;
+    border: 1px solid silver;
+    color: black;
+    height: 37px;
+    line-height: 37px;
+    vertical-align: top;
+    font-size: 15px;
+    font-weight:20px;
+  }
+  .boardfont, #boardadd, .twit-background{
+    font-family:'Lato';
+  }
+  .twit:hover{
+    background-color:silver;
+    box-shadow: 0px 0px 3px 3px black;
+  }
