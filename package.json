@@ -24,7 +24,7 @@
     "node-pre-gyp": "^0.14.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "sequelize": "^4.44.3"
+    "sequelize": "^5.15.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.1"
